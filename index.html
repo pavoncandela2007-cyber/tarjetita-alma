@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff3f7">
+<title>La Primera Comunión de Alma</title>
+<style>
+:root{color-scheme:light;--pink:#b16d87;--ink:#795363;--paper:#fffafb;--line:#f0d9e2}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:#fff3f7;color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+.card{position:relative;overflow:hidden;width:min(100%,440px);padding:36px 25px 30px;text-align:center;background:linear-gradient(150deg,#fffdfd,#fff0f5);border:1px solid #eac5d2;border-radius:180px 180px 24px 24px;box-shadow:0 12px 32px #c78fa51b}
+.flower{position:absolute;top:12px;left:13px;opacity:.72;font-size:24px}.flower.right{left:auto;right:13px}.ornament{color:#c78b9e;letter-spacing:7px;font-size:19px}.eyebrow{font-family:Arial,sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#ae788c;margin-top:18px}h1{font-weight:400;font-size:clamp(42px,12vw,54px);line-height:1.12;margin:12px 0 6px;color:#a86680}.subtitle{font-size:17px;font-style:italic;color:#987184}.cross{font-size:30px;color:#c69b67;margin:17px 0 8px}.intro{font-size:14px;line-height:1.75;max-width:300px;margin:0 auto 24px;color:#987b88}.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.unit{background:#fffafb;border:1px solid var(--line);border-radius:13px;padding:13px 2px 11px;min-width:0}.number{font-family:Arial,sans-serif;font-size:clamp(22px,7vw,34px);font-weight:300;line-height:1.15;color:var(--pink);font-variant-numeric:tabular-nums}.label{font-family:Arial,sans-serif;font-size:9px;letter-spacing:.4px;color:#a38492;margin-top:7px}.date{font-family:Arial,sans-serif;font-size:12px;letter-spacing:1px;line-height:1.9;margin:22px 0 15px;color:#9e7184}.footer{font-size:14px;font-style:italic;color:#b08093}.bottom{font-size:19px;letter-spacing:5px;margin-top:15px;color:#cba1b0}.share{display:inline-block;margin-top:22px;border:1px solid #e4b8ca;background:#fff9fb;color:#a86680;border-radius:999px;padding:11px 18px;font:13px Arial,sans-serif;text-decoration:none}.share:focus-visible{outline:3px solid #b16d87;outline-offset:3px}.note{font:11px Arial,sans-serif;color:#a58a96;margin-top:12px}
+</style>
+</head>
+<body>
+<main class="card">
+<div class="flower">🌸</div><div class="flower right">🌷</div>
+<div class="ornament">✧ · ♡ · ✧</div>
+<div class="eyebrow">Un día lleno de amor</div>
+<h1>Alma</h1>
+<div class="subtitle">Mi Primera Comunión</div>
+<div class="cross" aria-hidden="true">†</div>
+<p class="intro">Un día muy especial, lleno de fe, ternura y bendiciones. Que Jesús ilumine siempre tu camino. ♡</p>
+<div class="eyebrow" style="margin-bottom:13px">La cuenta regresiva</div>
+<div class="countdown" role="timer" aria-label="Cuenta regresiva hasta la Primera Comunión de Alma">
+<div class="unit"><div class="number" id="days">--</div><div class="label">DÍAS</div></div>
+<div class="unit"><div class="number" id="hours">--</div><div class="label">HORAS</div></div>
+<div class="unit"><div class="number" id="minutes">--</div><div class="label">MINUTOS</div></div>
+<div class="unit"><div class="number" id="seconds">--</div><div class="label">SEGUNDOS</div></div>
+</div>
+<div class="date">SÁBADO 31 DE OCTUBRE DE 2026<br>21:30 HS · ARGENTINA</div>
+<div class="footer" id="message">Cada segundo nos acerca a este día tan lindo ♡</div>
+<div class="bottom">❀ ♡ ❀</div>
+<a class="share" href="https://wa.me/?text=" id="share" target="_blank" rel="noopener">Compartir por WhatsApp ♡</a>
+<div class="note">Con mucho amor, para un día inolvidable.</div>
+</main>
+<script>
+(function(){
+  const target = new Date('2026-10-31T21:30:00-03:00').getTime();
+  const nodes = ['days','hours','minutes','seconds'].map(id=>document.getElementById(id));
+  const message=document.getElementById('message');
+  function update(){
+    const remaining=target-Date.now();
+    if(remaining<=0){nodes.forEach(n=>n.textContent='00');message.textContent='¡Llegó el gran día de Alma! ♡';return;}
+    const s=Math.floor(remaining/1000);
+    const values=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];
+    nodes.forEach((n,i)=>n.textContent=String(values[i]).padStart(2,'0'));
+  }
+  document.getElementById('share').href='https://wa.me/?text='+encodeURIComponent('¡Te compartimos la tarjetita de la Primera Comunión de Alma! 🌸🕊️');
+  update();setInterval(update,1000);
+})();
+</script>
+</body>
+</html>
